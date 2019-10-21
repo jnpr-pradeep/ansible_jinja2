@@ -1,0 +1,3 @@
+{% for interface in interfaces %}
+set interfaces {{interface.name}} unit 0 family inet address {{interface.ip}}
+{% endfor %}
