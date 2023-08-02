@@ -32,3 +32,19 @@
 #        file: "{{ conf_file }}"
 #        timeout: 120
 #    register: junos_result
+
+    - name: Execute commands on a Juniper Device to get info (current)...
+      juniper_junos_config:
+        retrieve: committed
+        check: false
+        commit: false
+        format: text
+        options:
+          inherit: "inherit"
+        provider:
+          host: "{{device_management_ip}}"
+          username: "{{device_username}}"
+          password: "{{device_password}}"
+          port: 22
+      register: command_resp_current
+      ignore_errors: true
